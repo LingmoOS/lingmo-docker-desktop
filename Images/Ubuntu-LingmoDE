@@ -23,7 +23,7 @@ RUN wget ${KF} -O lingmo.gpg && apt-key add ./lingmo.gpg ||echo 4
 RUN apt update &&DEBIAN_FRONTEND=noninteractive apt install -y \
     lingmo-workspace-base
 RUN apt -y install psmisc
-COPY X11GUI/de-lingmo.sh /lingmo.sh
+COPY X11GUI/lingmo.sh /lingmo.sh
 RUN chmod 755 /lingmo.sh
 
 # X11VNC Root Set ---------------------------------------------
