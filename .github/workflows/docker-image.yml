@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  #push:
+  #  branches: [ "main" ]
+  #pull_request:
+  #  branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Ubuntu 24.04 Lingmo Docker image
+      run: docker buildx build \
+           --progress=plain \
+           --allow security.insecure \
+           --file Images/Ubuntu-LingmoDE \
+           --tag pikachuim/ubuntu:24.04-lingmo \
+           --build-arg OS_VERSION=24.04 \
+           --build-arg OS_VERSHOW=24.04 \
+           --build-arg OS_SYSTEMS=ubuntu \
+           .
